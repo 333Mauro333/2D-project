@@ -9,14 +9,17 @@ namespace Project2D
 
     public class CharacterMovement : MonoBehaviour
     {
-        [SerializeField] float speedMovement = 5;
-
         [SerializeField] ControlsType controls;
+
+        [SerializeField] float speedMovement = 0.0f;
+
+        [SerializeField] SpriteController sc = null;
 
         KeyCode up;
         KeyCode down;
         KeyCode left;
         KeyCode right;
+        SpriteRenderer sr;
 
 
 
@@ -38,6 +41,7 @@ namespace Project2D
                     right = KeyCode.RightArrow;
                     break;
             }
+            sr = GetComponent<SpriteRenderer>();
         }
 
         void Update()
@@ -52,18 +56,27 @@ namespace Project2D
             if (Input.GetKey(up))
             {
                 MoveUp();
+                sc.SetSprite(ref sr, SpriteType.UP);
             }
             if (Input.GetKey(down))
             {
                 MoveDown();
+                sc.SetSprite(ref sr, SpriteType.DOWN);
             }
             if (Input.GetKey(left))
             {
                 MoveLeft();
+                sc.SetSprite(ref sr, SpriteType.LEFT);
             }
             if (Input.GetKey(right))
             {
                 MoveRight();
+                sc.SetSprite(ref sr, SpriteType.RIGHT);
+            }
+
+            if (!Input.GetKey(up) && !Input.GetKey(down) && !Input.GetKey(left) && !Input.GetKey(right))
+            {
+                sc.SetSprite(ref sr, SpriteType.IDLE);
             }
         }
 
