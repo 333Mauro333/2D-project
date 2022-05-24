@@ -18,6 +18,12 @@ namespace Project2D
 
 
 
+        void Update()
+        {
+            
+        }
+
+
         public void SetSprite(ref SpriteRenderer sr, SpriteType newS)
         {
             if (sr.sprite != GetSprite(newS))

@@ -15,6 +15,9 @@ namespace Project2D
 
         [SerializeField] SpriteController sc = null;
 
+        public delegate void SpriteChangeHandler(Sprite s);
+        public event SpriteChangeHandler spriteChange;
+
         KeyCode up;
         KeyCode down;
         KeyCode left;
